@@ -30,6 +30,6 @@ object OpResumeEscape : Action {
             CastingImage.ParenthesizedIota(PatternIota(SpecialPatterns.RETROSPECTION), false)
         )
         val newPrevImage = prevImage.copy(parenthesized = newParens, opsConsumed = prevImage.opsConsumed + image.opsConsumed)
-        return OperationResult(newPrevImage, listOf(), continuation, HexEvalSounds.MUTE)
+        return OperationResult(newPrevImage, listOf(), continuation, HexEvalSounds.THOTH)
     }
 }
