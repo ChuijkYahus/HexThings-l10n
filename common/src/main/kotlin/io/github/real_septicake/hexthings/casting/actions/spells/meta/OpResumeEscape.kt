@@ -6,9 +6,9 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult
 import at.petrak.hexcasting.api.casting.eval.SpecialPatterns
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation
-import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.iota.PatternIota
 import at.petrak.hexcasting.common.lib.hex.HexEvalSounds
+import io.github.real_septicake.hexthings.casting.mishaps.MishapInvalidUnquote
 
 object OpResumeEscape : Action {
     override fun operate(
@@ -17,9 +17,9 @@ object OpResumeEscape : Action {
         continuation: SpellContinuation
     ): OperationResult {
         val stack = image.stack.toMutableList()
-        if(stack.first() is NullIota)
-            stack.removeFirst()
         val prev = image.userData.getCompound("hexthings_prev")
+        if(prev.isEmpty)
+            throw MishapInvalidUnquote()
         val prevImage = CastingImage.loadFromNbt(prev, env.world)
         val newParens = prevImage.parenthesized.toMutableList()
         newParens.add(
