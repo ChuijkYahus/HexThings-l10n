@@ -2,6 +2,7 @@ package io.github.real_septicake.hexthings.mixin;
 
 import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
 import at.petrak.hexcasting.common.msgs.MsgNewSpellPatternS2C;
+import com.llamalad7.mixinextras.sugar.Local;
 import io.github.real_septicake.hexthings.mxin_interface.ECVMixinInterface;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
@@ -21,7 +22,7 @@ public class MsgNewSpellPatternS2CMixin {
     private ExecutionClientView info;
 
     @Unique
-    private static int depth;
+    private static int hexThings$depth;
 
     @Inject(
             method = "deserialize",
@@ -29,11 +30,10 @@ public class MsgNewSpellPatternS2CMixin {
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/FriendlyByteBuf;readInt()I",
                     shift = At.Shift.AFTER
-            ),
-            remap = false
+            )
     )
-    private static void readDepth(ByteBuf buffer, CallbackInfoReturnable<MsgNewSpellPatternS2C> cir) {
-        depth = buffer.readInt();
+    private static void readDepth(ByteBuf buffer, CallbackInfoReturnable<MsgNewSpellPatternS2C> cir, @Local FriendlyByteBuf buf) {
+        hexThings$depth = buf.readInt();
     }
 
     @Inject(
@@ -45,7 +45,7 @@ public class MsgNewSpellPatternS2CMixin {
     private static void alterReturn(ByteBuf buffer, CallbackInfoReturnable<MsgNewSpellPatternS2C> cir) {
         MsgNewSpellPatternS2C m = cir.getReturnValue();
         ExecutionClientView ecv = m.info();
-        ((ECVMixinInterface) (Object) ecv).hexThings$setDepth(depth);
+        ((ECVMixinInterface) (Object) ecv).hexThings$setDepth(hexThings$depth);
         cir.setReturnValue(new MsgNewSpellPatternS2C(ecv, m.index()));
     }
 
@@ -54,10 +54,8 @@ public class MsgNewSpellPatternS2CMixin {
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/network/FriendlyByteBuf;writeInt(I)Lio/netty/buffer/ByteBuf;",
-                    shift = At.Shift.AFTER,
-                    remap = false
-            ),
-            remap = false
+                    shift = At.Shift.AFTER
+            )
     )
     private void writeDepth(FriendlyByteBuf buf, CallbackInfo ci) {
         buf.writeInt(((ECVMixinInterface) (Object) info).hexThings$getDepth());
