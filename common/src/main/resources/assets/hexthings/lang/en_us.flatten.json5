@@ -3,30 +3,25 @@
     book: {
       patterns: {
         spells: {
-          dummy_spells: {
-            "": "Dummy Spells",
-            noop: "Everything keeps happening constantly, action after \
-            spell after iota after pattern. I've created a pattern that \
-            does nothing in the hopes things might slow down. Conveniently, \
-            this pattern's lack of a function and its flexibility in form \
-            make it quite useful for making changes to a spell later.",
-            insert: "Surgeon's Exaltation works incredibly well on its own, \
-            but I find myself wishing I could replace the iota with more than \
-            one more every now and then. As a result, I created this pattern, \
-            allowing me to do just that.",
-            unquote: {
-              "1": "There's a technique known as \"Iota Embedding\" mentioned \
-              in texts, and I've figured out how to make that process simpler. \
-              This pattern can be used to place raw iota directly into an \
-              Introspection-Restrospection pair.",
-              "2": "After drawing this pattern, all subsequent patterns are \
-              evaluated as normal starting from an empty stack until a \
-              Retrojection is drawn. At which point all iota on the stack \
-              will be placed in the list originally escaped by the \
-              Introjection, surrounded by another Introjection-Retrojection pair."
-            },
-            requote: "After putting the contents of the stack back into \
-            the list, patterns are escaped as usual."
+          utils: {
+            "": "HexUtils",
+            noop: "Does nothing, but the tail can be any shape. Useful as \
+            a placeholder to be replaced later",
+            insert: "Similar to $(l:patterns/lists#hexcasting:replace)Surgeon's Exaltation/$, but replaces the \
+            $(o)n$()th element of the first list instead with the elements of the second list",
+            unquote: "This pattern can be used to place raw iota directly into an \
+            Introspection-Restrospection pair. After drawing this pattern, all \
+            subsequent patterns are \"unescaped\", allowing them to be executed as \
+            normal until a $(l:patterns/spells/hexutils#hexthings:requote)Retrojection/$ is \
+            encountered.",
+            requote: "When used after an \
+            $(l:patterns/spells/hexutils#hexthings:unquote)Introjection/$, \
+            This pattern puts all iota into the escaped list, surrounded by an \
+            Introspection and Retrospection.",
+            isgreatersent: "Pushes if my current sentinel is a \
+            $(l:patterns/great_spells/greater_sentinel)Greater Sentinel/$, \
+            or $(l:patterns/consts#hexcasting:const/null)Null/$ if I \
+            have no sentinel at all."
           },
         },
       },
@@ -39,7 +34,8 @@
         noop: "Patience",
         insert: "Flattening Exaltation",
         unquote: "Introjection",
-        requote: "Retrojection"
+        requote: "Retrojection",
+        isgreatersent: "Shard Reflection"
       },
 
       // use this to add shortened versions of pattern names if the full name won't fit in the ingame book

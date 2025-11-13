@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(GuiSpellcasting.class)
 public class GuiSpellcastingMixin {
     @Unique
-    private int depth;
+    private int hexThings$depth;
 
     @Inject(
             method = "recvServerUpdate",
@@ -24,16 +24,18 @@ public class GuiSpellcastingMixin {
             remap = false
     )
     public void getDepth(ExecutionClientView info, int index, CallbackInfo ci) {
-        this.depth = ((ECVMixinInterface) (Object) info).hexThings$getDepth();
+        this.hexThings$depth = ((ECVMixinInterface) (Object) info).hexThings$getDepth();
     }
 
     @Inject(method = "render", at = @At(value = "TAIL"), remap = false)
     public void render(GuiGraphics graphics, int pMouseX, int pMouseY, float pPartialTick, CallbackInfo ci, @Local Font font, @Local PoseStack ps) {
-        if(depth > 0) {
+        if(hexThings$depth > 0) {
             ps.pushPose();
-            ps.translate(10, ((GuiSpellcasting)(Object)this).height - 10, 0);
-//            ps.scale(0.75f, 0.75f, 1);
-            graphics.drawString(font, "Introjection Depth: " + depth, 0, 0, 0xffffff, true);
+            String label = "Introjection Depth: " + hexThings$depth;
+            int width = font.width(label);
+            graphics.drawCenteredString(font, label, (((GuiSpellcasting)(Object)this).width/2), 10, 0xffffff);
+            GuiSpellcasting.Companion.drawBox(ps, (((GuiSpellcasting)(Object)this).width/2.0f) - ((float) width /2) - 4, 6, width + 7, 16, 2.5f);
+            ps.popPose();
         }
     }
 }
