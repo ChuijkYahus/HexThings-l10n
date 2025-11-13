@@ -7,20 +7,20 @@
             "": "HexUtils",
             noop: "Does nothing, but the tail can be any shape. Useful as \
             a placeholder to be replaced later",
-            insert: "Similar to $(l:patterns/lists#hexcasting:replace)Surgeon's Exaltation/$, but replaces the \
-            $(o)n$()th element of the first list instead with the elements of the second list",
+            insert: "Similar to $(l:patterns/lists#hexcasting:replace)$(action)Surgeon's Exaltation/$, but replaces the \
+             element of the first list instead with the $(o)elements/$ of the second list, rather than the list itself.",
             unquote: "This pattern can be used to place raw iota directly into an \
             Introspection-Restrospection pair. After drawing this pattern, all \
             subsequent patterns are \"unescaped\", allowing them to be executed as \
-            normal until a $(l:patterns/spells/hexutils#hexthings:requote)Retrojection/$ is \
+            normal until a $(l:patterns/spells/hexutils#hexthings:requote)$(action)Retrojection/$ is \
             encountered.",
             requote: "When used after an \
-            $(l:patterns/spells/hexutils#hexthings:unquote)Introjection/$, \
+            $(l:patterns/spells/hexutils#hexthings:unquote)$(action)Introjection/$, \
             This pattern puts all iota into the escaped list, surrounded by an \
             Introspection and Retrospection.",
             isgreatersent: "Pushes if my current sentinel is a \
-            $(l:patterns/great_spells/greater_sentinel)Greater Sentinel/$, \
-            or $(l:patterns/consts#hexcasting:const/null)Null/$ if I \
+            $(l:patterns/great_spells/greater_sentinel)$(action)Greater Sentinel/$, \
+            or $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ if I \
             have no sentinel at all."
           },
         },
