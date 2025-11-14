@@ -10,7 +10,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapTooManyCloseParens;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.llamalad7.mixinextras.sugar.ref.LocalBooleanRef;
 import io.github.real_septicake.hexthings.casting.eval.SpecialPatterns;
-import io.github.real_septicake.hexthings.mxin_interface.ECVMixinInterface;
+import io.github.real_septicake.hexthings.mixin_interface.ECVMixinInterface;
 import kotlin.Pair;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;

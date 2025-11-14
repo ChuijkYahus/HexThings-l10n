@@ -3,7 +3,7 @@ package io.github.real_septicake.hexthings.mixin;
 import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
 import at.petrak.hexcasting.common.msgs.MsgNewSpellPatternS2C;
 import com.llamalad7.mixinextras.sugar.Local;
-import io.github.real_septicake.hexthings.mxin_interface.ECVMixinInterface;
+import io.github.real_septicake.hexthings.mixin_interface.ECVMixinInterface;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.FriendlyByteBuf;
 import org.spongepowered.asm.mixin.Final;

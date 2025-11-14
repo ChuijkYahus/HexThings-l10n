@@ -1,6 +1,6 @@
 package io.github.real_septicake.hexthings.mixin;
 
-import io.github.real_septicake.hexthings.mxin_interface.ECVMixinInterface;
+import io.github.real_septicake.hexthings.mixin_interface.ECVMixinInterface;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 

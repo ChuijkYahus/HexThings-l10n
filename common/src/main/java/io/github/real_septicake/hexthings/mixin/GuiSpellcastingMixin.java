@@ -4,7 +4,7 @@ import at.petrak.hexcasting.api.casting.eval.ExecutionClientView;
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.github.real_septicake.hexthings.mxin_interface.ECVMixinInterface;
+import io.github.real_septicake.hexthings.mixin_interface.ECVMixinInterface;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import org.spongepowered.asm.mixin.Mixin;

@@ -1,4 +1,4 @@
-package io.github.real_septicake.hexthings.mxin_interface;
+package io.github.real_septicake.hexthings.mixin_interface;
 
 public interface ECVMixinInterface {
     void hexThings$setDepth(int depth);
