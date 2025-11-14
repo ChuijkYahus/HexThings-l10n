@@ -8,7 +8,7 @@
             noop: "Does nothing, but the tail can be any shape. Useful as \
             a placeholder to be replaced later",
             insert: "Similar to $(l:patterns/lists#hexcasting:replace)$(action)Surgeon's Exaltation/$, but replaces the \
-             element of the first list instead with the $(o)elements/$ of the second list, rather than the list itself.",
+            element of the first list instead with the $(o)elements/$ of the second list, rather than the list itself.",
             unquote: "This pattern can be used to place raw iota directly into an \
             Introspection-Restrospection pair. After drawing this pattern, all \
             subsequent patterns are \"unescaped\", allowing them to be executed as \
@@ -16,8 +16,8 @@
             encountered.",
             requote: "When used after an \
             $(l:patterns/spells/hexutils#hexthings:unquote)$(action)Introjection/$, \
-            This pattern puts all iota into the escaped list, surrounded by an \
-            Introspection and Retrospection.",
+            This pattern puts all iota on the stack into the escaped list, with the \
+            previous state of the stack being restored.",
             isgreatersent: "Pushes if my current sentinel is a \
             $(l:patterns/great_spells/greater_sentinel)$(action)Greater Sentinel/$, \
             or $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ if I \
@@ -25,6 +25,10 @@
           },
         },
       },
+      noop_examples: {
+        "header": "Examples of Patience Patterns",
+        "text": "Some examples of Patience patterns that can be used."
+      }
     },
   },
 
