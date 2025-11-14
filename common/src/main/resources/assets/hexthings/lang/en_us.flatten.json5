@@ -4,7 +4,7 @@
       patterns: {
         spells: {
           utils: {
-            "": "HexUtils",
+            "": "Utilities",
             noop: "Does nothing, but the tail can be any shape. Useful as \
             a placeholder to be replaced later",
             insert: "Similar to $(l:patterns/lists#hexcasting:replace)$(action)Surgeon's Exaltation/$, but replaces the \
@@ -71,7 +71,7 @@
       },
     },
     mishap: {
-      "invalid_unquote": "Did not fist cast Introjection."
+      "invalid_unquote": "Did not first cast Introjection."
     }
   },
 

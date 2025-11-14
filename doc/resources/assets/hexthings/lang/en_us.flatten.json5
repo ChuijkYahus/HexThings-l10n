@@ -2,7 +2,7 @@
   hexdoc: {
     hexthings: {
       title: "HexThings Book",
-      description: "Some extra patterns I think would be neat",
+      description: "Very few patterns to solve very few problems",
     },
   }
 }
