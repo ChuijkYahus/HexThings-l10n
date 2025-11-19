@@ -7,6 +7,7 @@
     {
       "type": "hexcasting:manual_pattern",
       "anchor": "hexthings:noop",
+      op_id: "hexthings:noop",
       "text": "hexthings.book.patterns.spells.utils.noop",
       "header": "hexcasting.special.hexthings:noop",
       "patterns": [
@@ -61,8 +62,9 @@
       text: "hexthings.book.info.iota_embedding.text.2"
     },
     {
-      type: "hexcasting:manual_pattern_nosig",
+      type: "hexcasting:manual_pattern",
       anchor: "hexthings:unquote",
+      op_id: "hexthings:unquote",
       text: "hexthings.book.patterns.spells.utils.unquote",
       header: "hexcasting.action.hexthings:unquote",
       patterns: [
