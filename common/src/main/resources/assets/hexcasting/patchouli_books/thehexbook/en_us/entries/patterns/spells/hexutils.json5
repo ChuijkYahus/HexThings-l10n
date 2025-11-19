@@ -5,12 +5,12 @@
   advancement: "hexcasting:root",
   pages: [
     {
-      "type": "hexcasting:manual_pattern",
-      "anchor": "hexthings:noop",
+      type: "hexcasting:manual_pattern",
+      anchor: "hexthings:noop",
       op_id: "hexthings:noop",
-      "text": "hexthings.book.patterns.spells.utils.noop",
-      "header": "hexcasting.special.hexthings:noop",
-      "patterns": [
+      text: "hexthings.book.patterns.spells.utils.noop",
+      header: "hexcasting.special.hexthings:noop",
+      patterns: [
         {
           "startdir": "NORTH_EAST",
           "signature": "dade"
@@ -18,10 +18,10 @@
       ]
     },
     {
-      "type": "hexcasting:manual_pattern_nosig",
-      "text": "hexthings.book.noop_examples.text",
-      "header": "hexthings.book.noop_examples.header",
-      "patterns": [
+      type: "hexcasting:manual_pattern_nosig",
+      text: "hexthings.book.noop_examples.text",
+      header: "hexthings.book.noop_examples.header",
+      patterns: [
         {
           "startdir": "NORTH_EAST",
           "signature": "dadedqq"
