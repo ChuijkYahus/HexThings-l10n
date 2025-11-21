@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "hexthings:dict",
+    "hexcasting:null",
+    "hexcasting:entity",
+    "hexcasting:list",
+    "hexcasting:garbage",
+    "hexcasting:continuation"
+  ]
+}

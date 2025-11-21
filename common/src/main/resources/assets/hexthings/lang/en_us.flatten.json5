@@ -2,28 +2,46 @@
   hexthings: {
     book: {
       patterns: {
-        spells: {
-          utils: {
-            "": "Utilities",
-            noop: "Does nothing, but the tail can be any shape. Useful as \
-            a placeholder to be replaced later",
-            insert: "Similar to $(l:patterns/lists#hexcasting:replace)$(action)Surgeon's Exaltation/$, but replaces the \
-            element of the first list instead with the $(o)contents/$ of the second list, rather than with the list itself.",
-            unquote: "This pattern can be used to place raw iota directly into an \
-            Introspection-Restrospection pair. After drawing this pattern, all \
-            subsequent patterns are \"unescaped\", allowing them to be executed as \
-            normal until a $(l:patterns/spells/hexutils#hexthings:requote)$(action)Retrojection/$ is \
-            encountered.",
-            requote: "When used after an \
-            $(l:patterns/spells/hexutils#hexthings:unquote)$(action)Introjection/$, \
-            This pattern puts all iota on the stack into the escaped list, with the \
-            previous state of the stack being restored.",
-            isgreatersent: "Pushes if my current sentinel is a \
-            $(l:patterns/great_spells/greater_sentinel)$(action)Greater Sentinel/$, \
-            or $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ if I \
-            have no sentinel at all."
-          },
+        utils: {
+          "": "Utilities",
+          noop: "Does nothing, but the tail can be any shape. Useful as \
+          a placeholder to be replaced later",
+          insert: "Similar to $(l:patterns/lists#hexcasting:replace)$(action)Surgeon's Exaltation/$, but replaces the \
+          element of the first list instead with the $(o)contents/$ of the second list, rather than with the list itself.",
+          unquote: "This pattern can be used to place raw iota directly into an \
+          Introspection-Restrospection pair. After drawing this pattern, all \
+          subsequent patterns are \"unescaped\", allowing them to be executed as \
+          normal until a $(l:patterns/hexutils#hexthings:requote)$(action)Retrojection/$ is \
+          encountered.",
+          requote: "When used after an \
+          $(l:patterns/hexutils#hexthings:unquote)$(action)Introjection/$, \
+          This pattern puts all iota on the stack into the escaped list, with the \
+          previous state of the stack being restored.",
+          isgreatersent: "Pushes if my current sentinel is a \
+          $(l:patterns/great_spells/greater_sentinel)$(action)Greater Sentinel/$, \
+          or $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ if I \
+          have no sentinel at all."
         },
+        dict: {
+          "": "Dictionary Manipulation",
+          empty_dict: "Creates an empty Dictionary iota.",
+          abs: "Pushes the number of entries in the Dictionary",
+          replace: "Places the iota in the Dictionary at the specified key. Not every \
+          iota type is allowed to be used as a key, with notable exceptions being \
+          $(l:patterns/entities)$(thing)Entities/$, $(l:patterns/lists)$(thing)Lists/$, \
+          $(l:casting/influences)$(thing)Garbage/$, and $(l:patterns/consts#hexcasting:\
+          const/null)$(thing)Null/$ iota. Attempting to set the value of a key to \
+          $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ will remove the \
+          key the same way using $(l:patterns/dict#hexcasting:remove_from)$(action)\
+          Excisor's Distillation/$ would.",
+          remove_from: "Removes the key-value pair from the Dictionary, pushing the \
+          previous value, or $(l:patterns/consts#hexcasting:const/null)$(thing)Null/$ \
+          if no value was present.",
+          index_of: "Gets the value present at the provided key, or $(l:patterns/consts\
+          #hexcasting:const/null)$(thing)Null/$ if no value was present.",
+          dict_keys: "Pushes a list of the keys present in the Dictionary.",
+          dict_vals: "Pushes a list of the values present in the Dictionary."
+        }
       },
       info: {
         iota_embedding: {
@@ -63,7 +81,10 @@
         insert: "Flattening Exaltation",
         unquote: "Introjection",
         requote: "Retrojection",
-        isgreatersent: "Shard Reflection"
+        isgreatersent: "Shard Reflection",
+        empty_dict: "Vacant Reflection",
+        dict_keys: "Accessor's Purification",
+        dict_vals: "Accessed's Purification"
       },
 
       // use this to add shortened versions of pattern names if the full name won't fit in the ingame book
@@ -79,7 +100,8 @@
       }
     },
     mishap: {
-      "invalid_unquote": "Did not first cast Introjection."
+      "invalid_unquote": "Did not first cast Introjection.",
+      "invalid_key_type": "Iota of type %s is not allowed as a key."
     }
   },
 

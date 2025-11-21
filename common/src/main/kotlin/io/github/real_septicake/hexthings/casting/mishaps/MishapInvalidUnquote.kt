@@ -8,7 +8,7 @@ import net.minecraft.world.item.DyeColor
 
 class MishapInvalidUnquote : Mishap() {
     override fun accentColor(ctx: CastingEnvironment, errorCtx: Context): FrozenPigment {
-        return dyeColor(DyeColor.BLACK)
+        return dyeColor(DyeColor.ORANGE)
     }
 
     override fun errorMessage(ctx: CastingEnvironment, errorCtx: Context) = error("invalid_unquote")
