@@ -3,10 +3,12 @@ package io.github.real_septicake.hexthings.casting.actions
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.ListIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapInvalidIota
 import at.petrak.hexcasting.api.casting.mishaps.MishapNotEnoughArgs
 import io.github.real_septicake.hexthings.casting.iota.DictIota
+import net.minecraft.nbt.TagParser.parseTag
 import kotlin.collections.List
 
 object OpDictKeys : ConstMediaAction {
@@ -16,6 +18,6 @@ object OpDictKeys : ConstMediaAction {
         val map = args.getOrElse(0) { throw MishapNotEnoughArgs(1, 0) }
         if(map !is DictIota)
             throw MishapInvalidIota.ofType(map, 0, "map")
-        return listOf(ListIota(ArrayList(map.map.keys)))
+        return listOf(ListIota(map.map.keys.map { IotaType.deserialize(parseTag(it), env.world) }))
     }
 }

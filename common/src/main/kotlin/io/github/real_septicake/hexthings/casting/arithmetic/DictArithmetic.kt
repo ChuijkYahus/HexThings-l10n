@@ -7,6 +7,7 @@ import at.petrak.hexcasting.api.casting.arithmetic.predicates.IotaMultiPredicate
 import at.petrak.hexcasting.api.casting.arithmetic.predicates.IotaPredicate
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.iota.Iota
+import at.petrak.hexcasting.api.casting.iota.IotaType
 import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.casting.math.HexPattern
 import io.github.real_septicake.hexthings.casting.iota.DictIota
@@ -16,7 +17,7 @@ object DictArithmetic : Arithmetic {
 
     init {
         impls[Arithmetic.REPLACE] = mapKeyValToIota { mapIota, iota, iota2 -> mapIota[iota] = iota2; mapIota }
-        impls[Arithmetic.REMOVE] = mapKeyToIotas { mapIota, iota -> listOf(mapIota, mapIota.map.remove(iota) ?: NullIota()) }
+        impls[Arithmetic.REMOVE] = mapKeyToIotas { mapIota, iota -> listOf(mapIota, mapIota.map.remove(IotaType.serialize(iota).asString) ?: NullIota()) }
         impls[Arithmetic.INDEX_OF] = mapKeyToIotas { mapIota, iota -> listOf(mapIota[iota] ?: NullIota()) }
     }
 

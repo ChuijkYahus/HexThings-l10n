@@ -9,7 +9,7 @@ import net.minecraft.nbt.Tag
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 
-class DictIota(val map: HashMap<Iota, Iota>) : Iota(TYPE, map) {
+class DictIota(val map: HashMap<String, Iota>) : Iota(TYPE, map) {
     override fun isTruthy() = map.isNotEmpty()
 
     override fun toleratesOther(that: Iota?): Boolean {
@@ -22,15 +22,15 @@ class DictIota(val map: HashMap<Iota, Iota>) : Iota(TYPE, map) {
         val tag = CompoundTag()
         map.onEachIndexed { i, entry ->
             val e = CompoundTag()
-            e.put("key", IotaType.serialize(entry.key))
+            e.putString("key", entry.key)
             e.put("value", IotaType.serialize(entry.value))
             tag.put(i.toString(), e)
         }
         return tag
     }
 
-    operator fun get(key: Iota) = map[key]
-    operator fun set(key: Iota, value: Iota) { map[key] = value }
+    operator fun get(key: Iota) = map[IotaType.serialize(key).toString()]
+    operator fun set(key: Iota, value: Iota) { map[IotaType.serialize(key).toString()] = value }
 
     companion object {
         val TYPE: IotaType<DictIota> = object : IotaType<DictIota>() {
@@ -46,10 +46,10 @@ class DictIota(val map: HashMap<Iota, Iota>) : Iota(TYPE, map) {
         fun deserialize(tag: Tag, world: ServerLevel): DictIota {
             val ctag = tag.asCompound
             var idx = 0
-            val map = HashMap<Iota, Iota>()
+            val map = HashMap<String, Iota>()
             while(ctag.contains(idx.toString())) {
                 val entry = ctag[idx.toString()]!!.asCompound
-                val key = IotaType.deserialize(entry["key"]?.asCompound, world)
+                val key = entry["key"]!!.asString
                 val value = IotaType.deserialize(entry["value"]?.asCompound, world)
                 map[key] = value
                 idx++
