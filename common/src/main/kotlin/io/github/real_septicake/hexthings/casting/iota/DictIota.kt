@@ -6,6 +6,7 @@ import at.petrak.hexcasting.api.utils.asCompound
 import net.minecraft.ChatFormatting
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.Tag
+import net.minecraft.nbt.TagParser.parseTag
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
 
@@ -36,7 +37,7 @@ class DictIota(val map: HashMap<String, Iota>) : Iota(TYPE, map) {
         val TYPE: IotaType<DictIota> = object : IotaType<DictIota>() {
             override fun deserialize(tag: Tag, world: ServerLevel) = DictIota.deserialize(tag, world)
 
-            override fun display(tag: Tag): Component = display(tag.asCompound.size())
+            override fun display(tag: Tag): Component = DictIota.display(tag.asCompound)
 
             override fun color(): Int {
                 return 0x1bd6cf
@@ -57,10 +58,21 @@ class DictIota(val map: HashMap<String, Iota>) : Iota(TYPE, map) {
             return DictIota(map)
         }
 
-        fun display(size: Int): Component {
-            return Component.translatable("hexthings.tooltip.dict")
-                .append(" { size: $size }")
+        fun display(tag: CompoundTag): Component {
+            val comp = Component.literal(" { ")
                 .withStyle(ChatFormatting.DARK_AQUA)
+            var idx = 0
+            while(tag.contains(idx.toString())) {
+                val entry = tag[idx.toString()]!!.asCompound
+                idx++
+                comp.append(IotaType.getDisplay(parseTag(entry["key"]!!.asString).asCompound))
+                    .append(Component.literal(" : ").withStyle(ChatFormatting.DARK_AQUA))
+                    .append(IotaType.getDisplay(entry["value"]!!.asCompound))
+                if(tag.contains(idx.toString()))
+                    comp.append(Component.literal(", ").withStyle(ChatFormatting.DARK_AQUA))
+            }
+            comp.append(" }").withStyle(ChatFormatting.DARK_AQUA)
+            return comp
         }
     }
 }
