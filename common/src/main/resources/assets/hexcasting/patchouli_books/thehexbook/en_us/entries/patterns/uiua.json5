@@ -1,7 +1,7 @@
 {
   name: "hexthings.book.patterns.uiua",
   category: "hexcasting:patterns",
-  icon: "hexcasting:spellbook",
+  icon: "minecraft:acacia_sign",
   advancement: "hexcasting:root",
   pages: [
     {
