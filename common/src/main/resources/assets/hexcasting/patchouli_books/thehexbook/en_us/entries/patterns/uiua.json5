@@ -1,0 +1,56 @@
+{
+  name: "hexthings.book.patterns.uiua",
+  category: "hexcasting:patterns",
+  icon: "hexcasting:spellbook",
+  advancement: "hexcasting:root",
+  pages: [
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexthings:uiua_take",
+      anchor: "hexthings:uiua_take",
+      input: "list, (num | [num])",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.uiua_take"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexthings:uiua_drop",
+      anchor: "hexthings:uiua_drop",
+      input: "list, (num | [num])",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.uiua_drop"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexthings:uiua_rotate",
+      anchor: "hexthings:uiua_rotate",
+      input: "list, num",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.uiua_rotate"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexthings:uiua_where",
+      anchor: "hexthings:uiua_where",
+      input: "list",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.uiua_where"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexcasting:div",
+      anchor: "hexcasting:div",
+      input: "list, list",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.div"
+    },
+    {
+      type: "hexcasting:pattern",
+      op_id: "hexcasting:mul",
+      anchor: "hexcasting:mul",
+      input: "list, list",
+      output: "list",
+      text: "hexthings.book.patterns.uiua.mul"
+    }
+  ]
+}

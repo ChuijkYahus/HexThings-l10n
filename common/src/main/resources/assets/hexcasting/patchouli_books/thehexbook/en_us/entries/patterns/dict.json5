@@ -29,6 +29,14 @@
     },
     {
       type: "hexcasting:pattern",
+      op_id: "hexthings:dict_ents",
+      anchor: "hexthings:dict_ents",
+      input: "dict",
+      output: "list",
+      text: "hexthings.book.patterns.dict.dict_ents"
+    },
+    {
+      type: "hexcasting:pattern",
       op_id: "hexcasting:abs",
       anchor: "hexcasting:abs",
       input: "dict",

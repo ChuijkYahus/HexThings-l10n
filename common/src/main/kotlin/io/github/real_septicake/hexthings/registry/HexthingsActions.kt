@@ -9,7 +9,15 @@ import at.petrak.hexcasting.api.casting.math.HexPattern
 import at.petrak.hexcasting.common.lib.HexRegistries
 import at.petrak.hexcasting.common.lib.hex.HexActions
 import io.github.real_septicake.hexthings.casting.actions.*
+import io.github.real_septicake.hexthings.casting.actions.dict.OpDictEntries
+import io.github.real_septicake.hexthings.casting.actions.dict.OpDictKeys
+import io.github.real_septicake.hexthings.casting.actions.dict.OpDictVals
+import io.github.real_septicake.hexthings.casting.actions.dict.OpEmptyDict
 import io.github.real_septicake.hexthings.casting.actions.meta.OpResumeEscape
+import io.github.real_septicake.hexthings.casting.actions.uiua.OpUiuaDrop
+import io.github.real_septicake.hexthings.casting.actions.uiua.OpUiuaRotate
+import io.github.real_septicake.hexthings.casting.actions.uiua.OpUiuaTake
+import io.github.real_septicake.hexthings.casting.actions.uiua.OpUiuaWhere
 
 object HexthingsActions : HexthingsRegistrar<ActionRegistryEntry>(
     HexRegistries.ACTION,
@@ -24,6 +32,12 @@ object HexthingsActions : HexthingsRegistrar<ActionRegistryEntry>(
     val EMPTY_DICT = make("empty_dict", HexDir.NORTH_WEST, "eaaea") { OpEmptyDict }
     val DICT_KEYS = make("dict_keys", HexDir.SOUTH_WEST, "dqwaeawq") { OpDictKeys }
     val DICT_VALS = make("dict_vals", HexDir.NORTH_WEST, "wqwaeawq") { OpDictVals }
+    val DICT_ENTS = make("dict_ents", HexDir.SOUTH_WEST, "dqwaeawqd") { OpDictEntries }
+
+    val UIUA_TAKE = make("uiua_take", HexDir.NORTH_WEST, "qaeaqwd") { OpUiuaTake }
+    val UIUA_DROP = make("uiua_drop", HexDir.NORTH_WEST, "qaeaqda") { OpUiuaDrop }
+    val UIUA_ROTATE = make("uiua_rotate", HexDir.NORTH_WEST, "qaeaqweeee") { OpUiuaRotate }
+    val UIUA_WHERE = make("uiua_where", HexDir.NORTH_WEST, "qaeaqeaa") { OpUiuaWhere }
 
     private fun make(name: String, startDir: HexDir, signature: String, getAction: () -> Action) = register(name) {
         ActionRegistryEntry(HexPattern.fromAngles(signature, startDir), getAction())
