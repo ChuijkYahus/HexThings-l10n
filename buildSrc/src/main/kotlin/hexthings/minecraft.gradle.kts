@@ -4,7 +4,6 @@
 
 package hexthings
 
-import kotlin.io.path.div
 import libs
 
 plugins {
@@ -46,6 +45,25 @@ dependencies {
     })
 
     annotationProcessor(libs.bundles.asm)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("HexThings") {
+            artifactId = base.archivesName.get()
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("https://pkgs.dev.azure.com/hexxy-media/artifacts/_packaging/community/maven/v1")
+            credentials {
+                username = "Real-Septicake"
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
 }
 
 sourceSets {
