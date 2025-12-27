@@ -1,12 +1,12 @@
-package io.github.real_septicake.hexthings.casting.actions
+package io.github.real_septicake.hexthings.casting.actions.list
 
 import at.petrak.hexcasting.api.casting.SpellList
 import at.petrak.hexcasting.api.casting.asActionResult
-import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
-import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
 import at.petrak.hexcasting.api.casting.getList
 import at.petrak.hexcasting.api.casting.getPositiveIntUnder
+import at.petrak.hexcasting.api.casting.iota.Iota
 
 object OpFlatInsert : ConstMediaAction {
     override val argc = 3

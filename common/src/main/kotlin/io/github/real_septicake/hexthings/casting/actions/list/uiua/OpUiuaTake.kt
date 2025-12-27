@@ -1,4 +1,4 @@
-package io.github.real_septicake.hexthings.casting.actions.uiua
+package io.github.real_septicake.hexthings.casting.actions.list.uiua
 
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment
