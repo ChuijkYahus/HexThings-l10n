@@ -2,7 +2,11 @@ package io.github.real_septicake.hexthings.casting.iota
 
 import at.petrak.hexcasting.api.casting.iota.Iota
 import at.petrak.hexcasting.api.casting.iota.IotaType
+import at.petrak.hexcasting.api.casting.iota.NullIota
 import at.petrak.hexcasting.api.utils.asCompound
+import at.petrak.hexcasting.api.utils.isOfTag
+import at.petrak.hexcasting.common.lib.hex.HexIotaTypes
+import io.github.real_septicake.hexthings.HexthingsTags
 import net.minecraft.ChatFormatting
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.Tag
@@ -52,6 +56,8 @@ class DictIota(val map: HashMap<String, Iota>, val deserial: MutableMap<String, 
     }
 
     companion object {
+        val NULL_SERIAL = IotaType.serialize(NullIota()).asString
+
         val TYPE: IotaType<DictIota> = object : IotaType<DictIota>() {
             override fun deserialize(tag: Tag, world: ServerLevel) = DictIota.deserialize(tag, world)
 
@@ -70,10 +76,25 @@ class DictIota(val map: HashMap<String, Iota>, val deserial: MutableMap<String, 
             while(ctag.contains(idx.toString())) {
                 val entry = ctag[idx.toString()]!!.asCompound
                 val key = entry["key"]!!.asString
+                val deserialKey = IotaType.deserialize(parseTag(key).asCompound, world)
                 val value = IotaType.deserialize(entry["value"]?.asCompound, world)
 
+                if(deserialKey is NullIota)
+                    if(key != NULL_SERIAL) {
+                        idx++
+                        continue
+                    }
+                if(isOfTag(HexIotaTypes.REGISTRY, HexIotaTypes.REGISTRY.getKey(deserialKey.type)!!, HexthingsTags.Iota.DICT_KEY_BLACKLIST)) {
+                    idx++
+                    continue
+                }
+                if(value is NullIota) {
+                    idx++
+                    continue
+                }
+
                 map[key] = value
-                toIota[key] = IotaType.deserialize(parseTag(key).asCompound, world)
+                toIota[key] = deserialKey
                 idx++
             }
             return DictIota(map, toIota)
