@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## 0.1.6
+
+### Fixed
+
+- Dictionary entries with invalid keys or nulled values (such as when an entity reference no longer exists) are removed
+
+### Added
+
+- Ranger's Exaltation
+  - A hex casting equivalent to python's `range` function
+
+### Changed
+
+- Slight reorganization of book entries, with Flattening Exaltation being moved into Advanced List Manipulation
+
 ## 0.1.5.1
 
 ### Changed
