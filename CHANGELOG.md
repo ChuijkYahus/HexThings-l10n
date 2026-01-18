@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- Updated zh_cn translation by [ChuijkYahus](https://github.com/ChuijkYahus) via [#3 ](https://github.com/Real-Septicake/HexThings/pull/3)
+- Updated zh_cn translation by [ChuijkYahus](https://github.com/ChuijkYahus) via [#3](https://github.com/Real-Septicake/HexThings/pull/3)
 
 ## 0.1.6
 
